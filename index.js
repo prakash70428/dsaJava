@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Close Sidebar on Click Outside (Mobile) ---
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 900) {
-            if (sidebar.classList.contains('show') && 
-                !sidebar.contains(e.target) && 
+            if (sidebar.classList.contains('show') &&
+                !sidebar.contains(e.target) &&
                 !menuToggleBtn.contains(e.target)) {
                 sidebar.classList.remove('show');
             }
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             codeContentBox.classList.remove('hidden');
             codeFallbackBox.classList.add('hidden');
         }
-        
+
         const snippets = {
             java: probDetails.java || "// Java solution is cooking",
             cpp: probDetails.cpp || "// C++ solution is cooking",
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             explanationContentBox.classList.add('hidden');
             explanationFallbackBox.classList.remove('hidden');
-            if(window.resetRPS) window.resetRPS();
+            if (window.resetRPS) window.resetRPS();
         }
 
         // 4. Screenshots
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ];
             funFactText.innerText = facts[Math.floor(Math.random() * facts.length)];
         }
-        
+
         // 7. Homework
         const homeworkContentBox = document.getElementById('homework-content');
         const homeworkFallbackBox = document.getElementById('homework-fallback');
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             homeworkContentBox.classList.add('hidden');
             homeworkFallbackBox.classList.remove('hidden');
-            if(window.resetGym) window.resetGym();
+            if (window.resetGym) window.resetGym();
         }
     }
 
@@ -345,9 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
         compScore: 0
     };
 
-    window.playRPS = function(playerChoice) {
+    window.playRPS = function (playerChoice) {
         const compChoice = rpsOptions[Math.floor(Math.random() * 3)];
-        
+
         const msgEl = document.getElementById('rps-message');
         const pScoreEl = document.getElementById('rps-player-score');
         const cScoreEl = document.getElementById('rps-comp-score');
@@ -374,15 +374,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             rpsState.compScore++;
             cScoreEl.innerText = rpsState.compScore;
-            msgEl.innerHTML = `<span style="color:#ef4444;">Computer wins! 🤖</span>`;
+            msgEl.innerHTML = `<span style="color:#ef4444;">You folded! 🤖</span>`;
         }
-        
+
         if (rpsState.playerScore > 0 || rpsState.compScore > 0) {
             restartBtn.classList.remove('hidden');
         }
     };
 
-    window.resetRPS = function() {
+    window.resetRPS = function () {
         rpsState = { playerScore: 0, compScore: 0 };
         const pScoreEl = document.getElementById('rps-player-score');
         const cScoreEl = document.getElementById('rps-comp-score');
@@ -390,13 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const restartBtn = document.getElementById('rps-restart');
         const pHand = document.getElementById('rps-player-hand');
         const cHand = document.getElementById('rps-comp-hand');
-        
-        if(pScoreEl) pScoreEl.innerText = '0';
-        if(cScoreEl) cScoreEl.innerText = '0';
-        if(msgEl) msgEl.innerText = 'Choose your weapon!';
-        if(restartBtn) restartBtn.classList.add('hidden');
-        if(pHand) pHand.innerText = '🤜';
-        if(cHand) cHand.innerText = '🤛';
+
+        if (pScoreEl) pScoreEl.innerText = '0';
+        if (cScoreEl) cScoreEl.innerText = '0';
+        if (msgEl) msgEl.innerText = 'Choose your weapon!';
+        if (restartBtn) restartBtn.classList.add('hidden');
+        if (pHand) pHand.innerText = '🤜';
+        if (cHand) cHand.innerText = '🤛';
     };
 
     // --- Interactive Gym Fallback ---
@@ -404,12 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const gymEmoji = document.getElementById('gym-emoji');
     const gymRepsEl = document.getElementById('gym-reps');
 
-    window.liftWeight = function() {
+    window.liftWeight = function () {
         gymReps++;
-        if(gymRepsEl) gymRepsEl.innerText = gymReps;
-        
+        if (gymRepsEl) gymRepsEl.innerText = gymReps;
+
         const emojiEl = document.getElementById('gym-emoji');
-        if(emojiEl) {
+        if (emojiEl) {
             emojiEl.style.transform = 'translateY(-25px)';
             setTimeout(() => {
                 emojiEl.style.transform = 'translateY(0)';
@@ -425,10 +425,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.resetGym = function() {
+    window.resetGym = function () {
         gymReps = 0;
-        if(gymRepsEl) gymRepsEl.innerText = '0';
+        if (gymRepsEl) gymRepsEl.innerText = '0';
         const emojiEl = document.getElementById('gym-emoji');
-        if(emojiEl) emojiEl.innerText = '🏋️‍♂️';
+        if (emojiEl) emojiEl.innerText = '🏋️‍♂️';
     };
 });
