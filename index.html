@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
 </head>
 
 <body class="dark-theme">
@@ -100,7 +101,8 @@
                     <div class="segment-pane active" id="pane-explanation">
                         <div id="explanation-content">
                             <h3>Problem Explanation</h3>
-                            <p id="explanation-text">This is a detailed explanation of the problem. Master the optimal approach instead of just the brute force.</p>
+                            <p id="explanation-text">This is a detailed explanation of the problem. Master the optimal
+                                approach instead of just the brute force.</p>
                             <ul class="cool-list" id="explanation-details">
                                 <li>Understand the base cases</li>
                                 <li>Optimize loop performance</li>
@@ -110,32 +112,49 @@
 
                         <!-- Mini Game Fallback -->
                         <div id="explanation-fallback" class="hidden" style="margin-top: 1rem;">
-                            <div class="glass-card" style="padding: 1.5rem; text-align: center; border: 1px dashed var(--accent-secondary);">
+                            <div class="glass-card"
+                                style="padding: 1.5rem; text-align: center; border: 1px dashed var(--accent-secondary);">
                                 <h3 style="color: var(--accent-primary);">Explanation is Cooking 🍳</h3>
-                                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">While Senpai writes this solution, let's play <b style="color:var(--text-primary)">Rock, Paper, Scissors</b>! ✊✋✌️</p>
-                                
-                                <div id="rps-game-area" style="background: rgba(0,0,0,0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
-                                    <div style="display: flex; justify-content: space-around; margin-bottom: 1.5rem; align-items: center;">
-                                        <div class="score-box" style="flex: 1; margin: 0 0.5rem;">
-                                            <h4 style="font-size: 0.9rem; color:var(--text-secondary); margin-bottom: 5px;">You</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">While Senpai writes this
+                                    solution, let's play <b style="color:var(--text-primary)">Rock, Paper, Scissors</b>!
+                                    ✊✋✌️</p>
+
+                                <div id="rps-game-area"
+                                    style="background: rgba(0,0,0,0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                                    <div
+                                        style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap;">
+                                        <div class="score-box" style="flex: 1; min-width: 80px;">
+                                            <h4
+                                                style="font-size: 0.9rem; color:var(--text-secondary); margin-bottom: 5px; word-break: break-all;">
+                                                You</h4>
                                             <h2 id="rps-player-score" style="color: #4ade80; font-size: 2rem;">0</h2>
                                             <div id="rps-player-hand" style="font-size: 3rem; margin-top: 5px;">🤜</div>
                                         </div>
-                                        <div style="font-size: 1.2rem; font-weight: bold; color: var(--text-secondary);">VS</div>
-                                        <div class="score-box" style="flex: 1; margin: 0 0.5rem;">
-                                            <h4 style="font-size: 0.9rem; color:var(--text-secondary); margin-bottom: 5px;">Computer</h4>
+                                        <div
+                                            style="font-size: 1.2rem; font-weight: bold; color: var(--text-secondary); padding: 0 0.5rem;">
+                                            VS</div>
+                                        <div class="score-box" style="flex: 1; min-width: 80px;">
+                                            <h4
+                                                style="font-size: 0.9rem; color:var(--text-secondary); margin-bottom: 5px; word-break: break-all;">
+                                                Time</h4>
                                             <h2 id="rps-comp-score" style="color: #ef4444; font-size: 2rem;">0</h2>
                                             <div id="rps-comp-hand" style="font-size: 3rem; margin-top: 5px;">🤛</div>
                                         </div>
                                     </div>
-                                    <p id="rps-message" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; min-height: 28px;">Choose your weapon!</p>
-                                    
-                                    <div class="rps-buttons" style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+                                    <p id="rps-message"
+                                        style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; min-height: 28px;">
+                                        Choose your weapon!</p>
+
+                                    <div class="rps-buttons"
+                                        style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                                         <button class="hc-btn" onclick="playRPS('rock')" title="Rock">✊</button>
                                         <button class="hc-btn" onclick="playRPS('paper')" title="Paper">✋</button>
-                                        <button class="hc-btn" onclick="playRPS('scissors')" title="Scissors">✌️</button>
+                                        <button class="hc-btn" onclick="playRPS('scissors')"
+                                            title="Scissors">✌️</button>
                                     </div>
-                                    <button id="rps-restart" onclick="resetRPS()" class="hidden" style="margin-top: 1.5rem; padding: 0.6rem 1.5rem; background: var(--accent-primary); border: none; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 181, 172, 0.4);">Reset Game 🔄</button>
+                                    <button id="rps-restart" onclick="resetRPS()" class="hidden"
+                                        style="margin-top: 1.5rem; padding: 0.6rem 1.5rem; background: var(--accent-primary); border: none; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 181, 172, 0.4);">Reset
+                                        Game 🔄</button>
                                 </div>
                             </div>
                         </div>
@@ -161,12 +180,15 @@
     }
                             </code></pre>
                         </div>
-                        
+
                         <!-- Mini Fallback Code -->
-                        <div id="code-fallback" class="hidden" style="text-align: center; padding: 3rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
-                            <span style="font-size: 4rem; display: block; margin-bottom: 1rem; animation: float 3s infinite;">💻</span>
+                        <div id="code-fallback" class="hidden"
+                            style="text-align: center; padding: 3rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+                            <span
+                                style="font-size: 4rem; display: block; margin-bottom: 1rem; animation: float 3s infinite;">💻</span>
                             <h3 style="color: var(--accent-primary);">Code is Compiling... In Senpai's Brain!</h3>
-                            <p style="color: var(--text-secondary); margin-top: 0.5rem;">The optimal solution is being crafted. Please check back later for the elite logic.</p>
+                            <p style="color: var(--text-secondary); margin-top: 0.5rem;">The optimal solution is being
+                                crafted. Please check back later for the elite logic.</p>
                         </div>
                     </div>
 
@@ -181,10 +203,13 @@
                         </div>
 
                         <!-- Mini Fallback SS -->
-                        <div id="ss-fallback" class="hidden" style="text-align: center; padding: 3rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
-                            <span style="font-size: 4rem; display: block; margin-bottom: 1rem; animation: float 3s infinite;">📸</span>
+                        <div id="ss-fallback" class="hidden"
+                            style="text-align: center; padding: 3rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+                            <span
+                                style="font-size: 4rem; display: block; margin-bottom: 1rem; animation: float 3s infinite;">📸</span>
                             <h3 style="color: var(--accent-primary);">No Snaps Yet!</h3>
-                            <p style="color: var(--text-secondary); margin-top: 0.5rem;">Senpai hasn't taken IntelliJ screenshots for this problem yet. Brb, capturing bugs!</p>
+                            <p style="color: var(--text-secondary); margin-top: 0.5rem;">Senpai hasn't taken IntelliJ
+                                screenshots for this problem yet. Brb, capturing bugs!</p>
                         </div>
                     </div>
 
@@ -197,14 +222,22 @@
                         </div>
 
                         <!-- Mini Fallback Homework -->
-                        <div id="homework-fallback" class="hidden" style="text-align: center; padding: 2rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+                        <div id="homework-fallback" class="hidden"
+                            style="text-align: center; padding: 2rem 1rem; margin-top: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
                             <h3 style="color: var(--accent-primary);">No Homework Today!</h3>
-                            <p style="color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1.5rem;">Senpai gave you a day off. Go touch some grass or hit the gym! 💪</p>
+                            <p style="color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1.5rem;">Senpai
+                                gave you a day off. Go touch some grass or hit the gym! 💪</p>
 
-                            <div style="background: rgba(0,0,0,0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); display: inline-block; min-width: 250px;">
-                                <div id="gym-emoji" style="font-size: 5rem; display: block; margin-bottom: 1rem; transition: transform 0.1s ease-in-out;">🏋️‍♂️</div>
-                                <h4 style="color: var(--text-secondary); font-size: 1.2rem;">Reps: <span id="gym-reps" style="color:#4ade80; font-size:1.8rem;">0</span></h4>
-                                <button onclick="liftWeight()" class="hc-btn" style="width: auto; padding: 0.5rem 1.5rem; margin-top: 1rem; border-radius: 8px;">Pump Iron! ⬆️</button>
+                            <div
+                                style="background: rgba(0,0,0,0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); display: inline-block; min-width: 250px;">
+                                <div id="gym-emoji"
+                                    style="font-size: 5rem; display: block; margin-bottom: 1rem; transition: transform 0.1s ease-in-out;">
+                                    🏋️‍♂️</div>
+                                <h4 style="color: var(--text-secondary); font-size: 1.2rem;">Reps: <span id="gym-reps"
+                                        style="color:#4ade80; font-size:1.8rem;">0</span></h4>
+                                <button onclick="liftWeight()" class="hc-btn"
+                                    style="width: auto; padding: 0.5rem 1.5rem; margin-top: 1rem; border-radius: 8px;">Pump
+                                    Iron! ⬆️</button>
                             </div>
                         </div>
                     </div>
