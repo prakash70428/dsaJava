@@ -553,12 +553,17 @@ body:not(.dark-theme) .light-icon { display: none; }
     cursor: pointer;
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .code-lang-btn:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.code-lang-btn:active {
+    transform: translateY(0) scale(0.95);
 }
 
 .code-lang-btn.active {
@@ -582,6 +587,26 @@ body:not(.dark-theme) .light-icon { display: none; }
     line-height: 1.5;
     overflow-x: auto;
     margin: 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+#code-block::-webkit-scrollbar {
+    height: 8px;
+}
+
+#code-block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#code-block::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#code-block::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
 }
 
 /* Screenshots styling */
