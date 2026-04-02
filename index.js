@@ -234,7 +234,60 @@ document.addEventListener('DOMContentLoaded', () => {
             explanationContentBox.classList.remove('hidden');
             explanationFallbackBox.classList.add('hidden');
             explanationEl.innerText = probDetails.explanation;
-            explanationDetailsList.innerHTML = "<li>Read the approach carefully</li><li>Dry run on pen and paper</li>";
+            
+            // Render dynamic list if provided, else clear it
+            if (probDetails.explanationList && probDetails.explanationList.length > 0) {
+                let listHtml = "";
+                probDetails.explanationList.forEach(item => {
+                    listHtml += `<li>${item}</li>`;
+                });
+                explanationDetailsList.innerHTML = listHtml;
+                explanationDetailsList.style.display = 'block';
+            } else {
+                explanationDetailsList.innerHTML = "";
+                explanationDetailsList.style.display = 'none';
+            }
+
+            // Render LeetCode IO / Constraints styles
+            const leetcodeDetails = document.getElementById('leetcode-details');
+            const ioContent = document.getElementById('io-content');
+            const constraintsList = document.getElementById('constraints-list');
+            const constraintsSection = document.querySelector('.constraints-section');
+
+            if ((probDetails.io && probDetails.io.length > 0) || (probDetails.constraints && probDetails.constraints.length > 0)) {
+                leetcodeDetails.classList.remove('hidden');
+
+                if (probDetails.io && probDetails.io.length > 0) {
+                    ioContent.parentElement.style.display = 'block';
+                    let ioHtml = "";
+                    probDetails.io.forEach(ioObj => {
+                        ioHtml += `<p><strong>Input:</strong> ${ioObj.input}</p>`;
+                        ioHtml += `<p><strong>Output:</strong> ${ioObj.output}</p>`;
+                        if (ioObj.explanation) {
+                            ioHtml += `<p><strong>Explanation:</strong> ${ioObj.explanation}</p>`;
+                        }
+                        ioHtml += `<br>`;
+                    });
+                    ioContent.innerHTML = ioHtml;
+                } else {
+                    ioContent.parentElement.style.display = 'none';
+                }
+
+                if (probDetails.constraints && probDetails.constraints.length > 0) {
+                    constraintsSection.style.display = 'block';
+                    let constrainsHtml = "";
+                    probDetails.constraints.forEach(c => {
+                        constrainsHtml += `<li>${c}</li>`;
+                    });
+                    constraintsList.innerHTML = constrainsHtml;
+                } else {
+                    constraintsSection.style.display = 'none';
+                }
+
+            } else {
+                leetcodeDetails.classList.add('hidden');
+            }
+
         } else {
             explanationContentBox.classList.add('hidden');
             explanationFallbackBox.classList.remove('hidden');
@@ -264,10 +317,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const videoContent = document.getElementById('video-content');
         const videoPlaceholder = document.getElementById('video-placeholder');
 
-        if (currentProblem && currentProblem.youtubeId) {
+        const videoId = (probDetails && probDetails.youtubeId) || (currentProblem && currentProblem.youtubeId);
+
+        if (videoId) {
             videoContent.classList.remove('hidden');
             videoPlaceholder.classList.add('hidden');
-            videoFrame.src = `https://www.youtube.com/embed/${currentProblem.youtubeId}`;
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
         } else {
             videoContent.classList.add('hidden');
             videoPlaceholder.classList.remove('hidden');
