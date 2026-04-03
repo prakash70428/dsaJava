@@ -235,6 +235,18 @@ document.addEventListener('DOMContentLoaded', () => {
             explanationFallbackBox.classList.add('hidden');
             explanationEl.innerText = probDetails.explanation;
             
+            // Render problem image if exists
+            const problemImageEl = document.getElementById('problem-image');
+            if (problemImageEl) {
+                if (probDetails.problemImage) {
+                    problemImageEl.src = probDetails.problemImage;
+                    problemImageEl.style.display = 'block';
+                } else {
+                    problemImageEl.style.display = 'none';
+                    problemImageEl.src = '';
+                }
+            }
+
             // Render dynamic list if provided, else clear it
             if (probDetails.explanationList && probDetails.explanationList.length > 0) {
                 let listHtml = "";

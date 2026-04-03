@@ -259,22 +259,87 @@ window.problemsData = {
     // -------------------------------------------------------------
 
     "1_2_1": {
-        explanation: "Print a solid square pattern of size N x N using stars (*). This helps you understand nested loop fundamentals.",
+        explanation: "In this pattern, you need to print a right-angled triangle. The number of '*'s in each row is exactly equal to the row number.",
         explanationList: [
             "Use an outer loop to track the number of rows.",
-            "Use an inner loop to print stars across each column on the current row.",
+            "Use an inner loop to print '*' across each column on the current row.",
             "Print a newline after each inner loop finishes."
         ],
-        io: [{ input: "N = 3", output: "***\n***\n***" }],
+        io: [
+            { input: "N = 5", output: "*\n* *\n* * *\n* * * *\n* * * * *", explanation: "Row 1 has 1 '*', Row 5 has 5 '*'s." }
+        ],
         constraints: ["1 <= N <= 100"],
-        java: `class Solution {\n    public void printSquare(int n) {\n        for(int i=0; i<n; i++) {\n            for(int j=0; j<n; j++) {\n                System.out.print("*");\n            }\n            System.out.println();\n        }\n    }\n}`,
-        cpp: `void printSquare(int n) {\n    for(int i=0; i<n; i++) {\n        for(int j=0; j<n; j++) {\n            cout << "*";\n        }\n        cout << endl;\n    }\n}`,
-        python: `def printSquare(n):\n    for i in range(n):\n        print("*" * n)`,
-        js: `function printSquare(n) {\n    for(let i=0; i<n; i++) {\n        let row = "";\n        for(let j=0; j<n; j++) row += "*";\n        console.log(row);\n    }\n}`,
+        java: `class Solution {\n    public static void main(String[] args) {\n        int n = 5;\n        for(int i = 1; i <= n; i++) {\n            for(int j = 1; j <= i; j++) {\n                System.out.print("* ");\n            }\n            System.out.println();\n        }\n    }\n}`,
+        cpp: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 5;\n    for(int i = 1; i <= n; i++) {\n        for(int j = 1; j <= i; j++) {\n            cout << "* ";\n        }\n        cout << endl;\n    }\n    return 0;\n}`,
+        python: `n = 5\nfor i in range(1, n + 1):\n    print("* " * i)`,
+        js: `let n = 5;\nfor(let i = 1; i <= n; i++) {\n    let row = "";\n    for(let j = 1; j <= i; j++) row += "* ";\n    console.log(row.trim());\n}`,
         screenshots: [],
-        homework: "✏️ Try to print a hollow square pattern where only the borders have stars.",
-        youtubeId: "",
-        funFact: "Nested loops cause algorithmic compltly O(N^2) Time Complexity! ⏱️"
+        homework: "✏️ 1. Try to print the triangle upside down (decreasing '*'s).\n✏️ 2. Change '*' to print numbers (1, 1 2, 1 2 3) instead.",
+        youtubeId: "dummyId121",
+        funFact: "Nested loops can be visualized as an area of a triangle, which is why the time complexity naturally becomes O(N^2)! 📐"
+    },
+
+    "1_2_2": {
+        explanation: "This pattern prints a perfectly balanced pyramid. For each row `i`, you must print spaces to push the '*'s towards the center, then print the '*'s separated by spaces.",
+        explanationList: [
+            "First inner loop prints `n - i` spaces.",
+            "Second inner loop prints `i` times '* '.",
+            "Combine them inside the outer loop and print a newline."
+        ],
+        io: [
+            { input: "N = 5", output: "    *\n   * *\n  * * *\n * * * *\n* * * * *", explanation: "The 1st row has 4 spaces and 1 '*', making it centered." }
+        ],
+        constraints: ["1 <= N <= 100"],
+        java: `class Solution {\n    public static void main(String[] args) {\n        int n = 5;\n        for (int i = 1; i <= n; i++) {\n            for (int space = 1; space <= n - i; space++) {\n                System.out.print(" ");\n            }\n            for (int j = 1; j <= i; j++) {\n                System.out.print("* ");\n            }\n            System.out.println();\n        }\n    }\n}`,
+        cpp: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 5;\n    for(int i = 1; i <= n; i++) {\n        for(int space = 1; space <= n - i; space++) {\n            cout << " ";\n        }\n        for(int j = 1; j <= i; j++) {\n            cout << "* ";\n        }\n        cout << endl;\n    }\n    return 0;\n}`,
+        python: `n = 5\nfor i in range(1, n + 1):\n    spaces = " " * (n - i)\n    stars = "* " * i\n    print(spaces + stars.rstrip())\n`,
+        js: `let n = 5;\nfor(let i = 1; i <= n; i++) {\n    let row = " ".repeat(n - i);\n    let stars = "* ".repeat(i);\n    console.log(row + stars.trimRight());\n}`,
+        screenshots: [],
+        homework: "✏️ 1. Print an inverted pyramid.\n✏️ 2. Form a complete diamond by combining the pyramid and inverted pyramid. 💎",
+        youtubeId: "dummyId122",
+        funFact: "Pyramid printing is a popular interview question to test a candidate's comfort level with basic algebra and grid logic! 🧱"
+    },
+
+    "1_2_3": {
+        explanation: "This pattern prints two mirrored right-angled triangles that eventually merge at the base. You need to manage stars, then spaces, then stars again.",
+        explanationList: [
+            "Use variables `st` (stars) and `sp` (spaces). Initially `st = 1`, `sp = 2 * n - 3`.",
+            "In each row, print `st` stars, then `sp` spaces, then `st` stars.",
+            "Important: On the last row (when `i == n`), avoid printing the overlapping center star twice!"
+        ],
+        io: [
+            { input: "N = 5", output: "*       *\n**     **\n***   ***\n**** ****\n*********" }
+        ],
+        constraints: ["1 <= N <= 100"],
+        java: `class Solution {\n    public static void main(String[] args) {\n        int n = 5;\n        int st = 1;\n        int sp = 2 * n - 3;\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= st; j++) { System.out.print("*"); }\n            for (int j = 1; j <= sp; j++) { System.out.print(" "); }\n            int stars2 = (i == n) ? st - 1 : st;\n            for (int j = 1; j <= stars2; j++) { System.out.print("*"); }\n            System.out.println();\n            st++;\n            sp -= 2;\n        }\n    }\n}`,
+        cpp: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 5;\n    int st = 1, sp = 2 * n - 3;\n    for(int i = 1; i <= n; i++) {\n        for(int j = 1; j <= st; j++) cout << "*";\n        for(int j = 1; j <= sp; j++) cout << " ";\n        int stars2 = (i == n) ? st - 1 : st;\n        for(int j = 1; j <= stars2; j++) cout << "*";\n        cout << endl;\n        st++;\n        sp -= 2;\n    }\n    return 0;\n}`,
+        python: `n = 5\nst, sp = 1, 2 * n - 3\nfor i in range(1, n + 1):\n    left_stars = "*" * st\n    spaces = " " * sp if sp > 0 else ""\n    right_stars = "*" * (st - 1 if i == n else st)\n    print(left_stars + spaces + right_stars)\n    st += 1\n    sp -= 2\n`,
+        js: `let n = 5;\nlet st = 1, sp = 2 * n - 3;\nfor(let i = 1; i <= n; i++) {\n    let row = "";\n    for(let j=1; j<=st; j++) row += "*";\n    for(let j=1; j<=sp; j++) row += " ";\n    let stars2 = (i === n) ? st - 1 : st;\n    for(let j=1; j<=stars2; j++) row += "*";\n    console.log(row);\n    st++;\n    sp -= 2;\n}`,
+        screenshots: [],
+        homework: "✏️ 1. Print the W pattern instead of the V shape.\n✏️ 2. Write the code so we use `\\t` instead of spaces, to see how grid alignment changes.",
+        youtubeId: "dummyId123",
+        funFact: "Merging shapes mathematically requires handling the intersection point. That `i == n` conditional check is the magic trick here! 🪄"
+    },
+
+    "1_2_4": {
+        explanation: "This pattern is a variation of the pyramid, but the items printed alternate between '*' and '!'. It uses the odd/even indices inside the inner loop.",
+        explanationList: [
+            "The number of elements to print in row `i` is `2 * i - 1`.",
+            "First print `n - i` dual spaces (`  `) for alignment.",
+            "Use modulo arithmetic (`j % 2 != 0`) to print '* ' for odd positions, and '! ' for even positions."
+        ],
+        io: [
+            { input: "N = 5", output: "        * \n      * ! * \n    * ! * ! * \n  * ! * ! * ! * \n* ! * ! * ! * ! *", explanation: "Alternation happens inside every row." }
+        ],
+        constraints: ["1 <= N <= 100"],
+        java: `class Solution {\n    public static void main(String[] args) {\n        int n = 5;\n        for (int i = 1; i <= n; i++) {\n            for (int k = 1; k <= n - i; k++) {\n                System.out.print("  ");\n            }\n            for (int j = 1; j <= 2 * i - 1; j++) {\n                if (j % 2 != 0) {\n                    System.out.print("* ");\n                } else {\n                    System.out.print("! ");\n                }\n            }\n            System.out.println();\n        }\n    }\n}`,
+        cpp: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 5;\n    for(int i = 1; i <= n; i++) {\n        for(int k = 1; k <= n - i; k++) cout << "  ";\n        for(int j = 1; j <= 2 * i - 1; j++) {\n            if(j % 2 != 0) cout << "* ";\n            else cout << "! ";\n        }\n        cout << endl;\n    }\n    return 0;\n}`,
+        python: `n = 5\nfor i in range(1, n + 1):\n    spaces = "  " * (n - i)\n    chars = []\n    for j in range(1, 2 * i):\n        chars.append("*" if j % 2 != 0 else "!")\n    print(spaces + " ".join(chars))\n`,
+        js: `let n = 5;\nfor(let i = 1; i <= n; i++) {\n    let row = "  ".repeat(n - i);\n    for(let j = 1; j <= 2 * i - 1; j++) {\n        if(j % 2 !== 0) row += "* ";\n        else row += "! ";\n    }\n    console.log(row.trimRight());\n}`,
+        screenshots: [],
+        homework: "✏️ 1. Write the logic using a boolean toggle variable instead of modulo `% 2`.\n✏️ 2. Substitute `!` with the row number instead.",
+        youtubeId: "dummyId124",
+        funFact: "Boolean toggles inside loops are heavily used in low level UI rendering, such as alternating colors in a data table (Zebra Striping)! 🦓"
     },
 
 };
